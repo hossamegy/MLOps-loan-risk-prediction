@@ -1,0 +1,10 @@
+stages:
+  preprocess:
+    cmd: set PYTHONPATH=src&& python src/pipelines/preprocessing_pipeline.py
+    deps:
+      - datasets/loan_risk_prediction_dataset.csv
+      - src/pipelines/preprocessing_pipeline.py
+      - src/data/preprocessing.py
+      - config/params.yaml
+    outs:
+      - experiments/v1/processed_data.csv

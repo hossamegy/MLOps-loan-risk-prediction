@@ -4,5 +4,5 @@ import pandas as pd
 class BaseProcessor(ABC):
 
     @abstractmethod
-    def process(df: pd.DataFrame, columns: str):
+    def process(self, df: pd.DataFrame) -> pd.DataFrame:
         pass

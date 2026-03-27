@@ -3,9 +3,44 @@ experiment_name: "ex1"
 data:
   raw_data_path: "datasets/loan_risk_prediction_dataset.csv"
   processed_data_path: "experiments/v1"
-  train_size: 0.2
+  train_size: 0.8
   target: "LoanApproved"
 
 
 model:
-  max_depth: 30
+  encoder_path: "experiments/v1/encoder.pkl"
+
+  DecisionTreeClassifier:
+    max_depth: 8
+    min_samples_split: 5
+    min_samples_leaf: 2
+    random_state: 42
+
+  RandomForestClassifier:
+    n_estimators: 400
+    max_depth: 12
+    min_samples_split: 5
+    min_samples_leaf: 2
+    max_features: "sqrt"
+    random_state: 42
+
+  LogisticRegression:
+    solver: "liblinear"
+    C: 5.0
+    penalty: "l2"
+    random_state: 42
+
+  KNeighborsClassifier:
+    n_neighbors: 7
+    weights: "distance"
+    metric: "minkowski"
+
+  GaussianNB:
+    var_smoothing: 1e-9
+
+  SVC:
+    kernel: "rbf"
+    C: 5.0
+    gamma: "scale"
+    probability: true
+    random_state: 42

@@ -10,11 +10,14 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class PipeLineProcessor:
-    def run(preprocess_dict: dict[str, BaseProcessor]) -> pd.DataFrame:
+    def __init__(self, preprocess_dict: dict[str, BaseProcessor]):
+        self.preprocess_dict = preprocess_dict
+
+    def run(self) -> pd.DataFrame:
         config = load_config('config/params.yaml')
-        loader = CsvLoader(config['data']['raw_data'])
+        loader = CsvLoader(config['data']['raw_data_path'])
         df = loader.load_data()
-        for name, processor in preprocess_dict.items():
+        for name, processor in self.preprocess_dict.items():
             df = processor.process(df)
             logger.info(f"Applying {name} preprocessor")
             logger.info(f"Final shape: {df.shape}")

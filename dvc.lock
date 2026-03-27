@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: set PYTHONPATH=src&& python src/pipelines/preprocessing_pipeline.py
+    deps:
+    - path: config/params.yaml
+      hash: md5
+      md5: 89b4c74207a356d5b321cd9e2be5c462
+      size: 208
+    - path: datasets/loan_risk_prediction_dataset.csv
+      hash: md5
+      md5: 2dade252bc2c3e230df9aae0737f9dd7
+      size: 322603
+    - path: src/data/preprocessing.py
+      hash: md5
+      md5: 9d222869d4e9cfd1239cb0d733d1f350
+      size: 1027
+    - path: src/pipelines/preprocessing_pipeline.py
+      hash: md5
+      md5: 712ffcb78a3ef34c892562490644c792
+      size: 776
+    outs:
+    - path: experiments/v1/processed_data.csv
+      hash: md5
+      md5: 184a0908129d5520941a8f2538fc10ef
+      size: 682403
