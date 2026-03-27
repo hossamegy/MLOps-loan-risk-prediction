@@ -1,5 +1,10 @@
+experiment_name: "ex1"
+
 data:
+  raw_data_path: "datasets/loan_risk_prediction_dataset.csv"
+  processed_data_path: "experiments/v1"
   train_size: 0.2
+  target: "LoanApproved"
 
 
 model:
